@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctn1l1qfdan04"]
+[gd_scene load_steps=4 format=3 uid="uid://ctn1l1qfdan04"]
 
 [ext_resource type="PackedScene" uid="uid://do2xqf18oq2m2" path="res://componentes/jugador/jugador.tscn" id="1_ugwc0"]
+[ext_resource type="PackedScene" uid="uid://pudis5xkxful" path="res://Assets/HUD/hud.tscn" id="2_6jci7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jci7"]
 size = Vector2(1165, 92)
@@ -17,3 +18,5 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(572.5, 30)
 shape = SubResource("RectangleShape2D_6jci7")
+
+[node name="HUD" parent="." instance=ExtResource("2_6jci7")]

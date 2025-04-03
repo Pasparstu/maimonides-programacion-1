@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://pudis5xkxful"]
+
+[ext_resource type="Script" uid="uid://wgpy0khjymm1" path="res://Assets/HUD/hud.gd" id="1_sguss"]
+[ext_resource type="Texture2D" uid="uid://ttlg2nhl2neh" path="res://componentes/jugador/Animacion/star_particle.png" id="2_vayf7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iumss"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clwr5"]
+bg_color = Color(0.410428, 0.701914, 3.85046e-07, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_2udy1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2fb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq1a3"]
+bg_color = Color(0.229394, 0.634081, 0.903502, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sguss")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 19
+theme_override_constants/margin_bottom = 18
+
+[node name="BarrasContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VidaContainer" type="HBoxContainer" parent="MarginContainer/BarrasContainer"]
+layout_mode = 2
+
+[node name="Vidabar" type="ProgressBar" parent="MarginContainer/BarrasContainer/VidaContainer"]
+custom_minimum_size = Vector2(256, 50)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_iumss")
+theme_override_styles/fill = SubResource("StyleBoxFlat_clwr5")
+value = 65.0
+show_percentage = false
+
+[node name="VidaLabel" type="Label" parent="MarginContainer/BarrasContainer/VidaContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "32"
+label_settings = SubResource("LabelSettings_2udy1")
+
+[node name="MagiaContainer" type="HBoxContainer" parent="MarginContainer/BarrasContainer"]
+layout_mode = 2
+
+[node name="Magiabar" type="ProgressBar" parent="MarginContainer/BarrasContainer/MagiaContainer"]
+custom_minimum_size = Vector2(256, 50)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qu2fb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jq1a3")
+value = 25.0
+show_percentage = false
+
+[node name="MagiaLabel" type="Label" parent="MarginContainer/BarrasContainer/MagiaContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "32
+"
+
+[node name="MondeaContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Moneda" type="TextureRect" parent="MarginContainer/MondeaContainer"]
+custom_minimum_size = Vector2(45.185, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_vayf7")
+expand_mode = 5
+
+[node name="MonedaLabel" type="Label" parent="MarginContainer/MondeaContainer"]
+layout_mode = 2
+text = "32"
