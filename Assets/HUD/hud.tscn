@@ -47,6 +47,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 12
@@ -95,12 +99,12 @@ size_flags_vertical = 0
 text = "32
 "
 
-[node name="MondeaContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MonedaContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Moneda" type="TextureRect" parent="MarginContainer/MondeaContainer"]
+[node name="Moneda" type="TextureRect" parent="MarginContainer/MonedaContainer"]
 custom_minimum_size = Vector2(45.185, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -108,6 +112,6 @@ size_flags_vertical = 4
 texture = ExtResource("2_vayf7")
 expand_mode = 5
 
-[node name="MonedaLabel" type="Label" parent="MarginContainer/MondeaContainer"]
+[node name="MonedaLabel" type="Label" parent="MarginContainer/MonedaContainer"]
 layout_mode = 2
 text = "32"

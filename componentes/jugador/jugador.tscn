@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://do2xqf18oq2m2"]
+[gd_scene load_steps=49 format=3 uid="uid://do2xqf18oq2m2"]
 
 [ext_resource type="Texture2D" uid="uid://ky7oda1rahsc" path="res://componentes/jugador/Animacion/attack.png" id="1_m7hqu"]
 [ext_resource type="Script" uid="uid://cddf1l71gpj0i" path="res://componentes/jugador/jugador.gd" id="1_pdsb0"]
@@ -9,8 +9,9 @@
 [ext_resource type="Script" uid="uid://0s835hphmx5p" path="res://componentes/jugador/Estados/Quieto.gd" id="6_uc512"]
 [ext_resource type="Script" uid="uid://2fk1enej6350" path="res://componentes/jugador/Correr.gd" id="8_my51c"]
 [ext_resource type="Script" uid="uid://bxdkyh7hwqc5r" path="res://componentes/jugador/Saltar.gd" id="9_pyskb"]
-[ext_resource type="Script" uid="uid://c1yqclb1obce1" path="res://componentes/jugador/Estados/estado_4_atacar.gd" id="10_4w5qp"]
+[ext_resource type="Script" uid="uid://cp6axvxmiba0o" path="res://componentes/jugador/Estados/Atacar.gd" id="10_3quvm"]
 [ext_resource type="Script" uid="uid://bahw2skkupoam" path="res://componentes/jugador/Estados/cayendo.gd" id="11_3quvm"]
+[ext_resource type="PackedScene" uid="uid://pudis5xkxful" path="res://Assets/HUD/hud.tscn" id="12_3quvm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my51c"]
 size = Vector2(21.235, 48.12)
@@ -288,9 +289,13 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3quvm"]
+
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("jugador", "sprite", "hud")]
 script = ExtResource("1_pdsb0")
+jugador = NodePath(".")
 sprite = NodePath("AnimatedSprite2D")
+hud = NodePath("CanvasLayer/HUD")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -299,7 +304,7 @@ one_way_collision_margin = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kmgsu")
-animation = &"Correr"
+animation = &"Atacar"
 
 [node name="Maquina de estado" type="Node" parent="." node_paths=PackedStringArray("jugador")]
 script = ExtResource("5_iff7q")
@@ -317,10 +322,31 @@ metadata/_custom_type_script = "uid://cr650jj2hfj3h"
 script = ExtResource("9_pyskb")
 metadata/_custom_type_script = "uid://cr650jj2hfj3h"
 
-[node name="Atacando" type="Node" parent="Maquina de estado"]
-script = ExtResource("10_4w5qp")
+[node name="Atacar" type="Node" parent="Maquina de estado" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("10_3quvm")
+hitbox = NodePath("../../AttackHitbox")
 metadata/_custom_type_script = "uid://cr650jj2hfj3h"
 
 [node name="Cayendo" type="Node" parent="Maquina de estado"]
 script = ExtResource("11_3quvm")
 metadata/_custom_type_script = "uid://cr650jj2hfj3h"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("12_3quvm")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -70)
+limit_top = 0
+limit_bottom = 648
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(13, -16)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_3quvm")
+debug_color = Color(0.807843, 0.290196, 0.278431, 0.745098)

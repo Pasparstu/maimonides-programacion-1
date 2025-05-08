@@ -10,15 +10,17 @@ var moneda = 500
 @onready var texto_vida = $MarginContainer/BarrasContainer/VidaContainer/VidaLabel
 @onready var barra_magia = $MarginContainer/BarrasContainer/MagiaContainer/Magiabar
 @onready var texto_magia = $MarginContainer/BarrasContainer/MagiaContainer/MagiaLabel
-@onready var texto_moneda = $MarginContainer/MondeaContainer/MonedaLabel
+@onready var texto_moneda = $MarginContainer/MonedaContainer
 
 func _ready():
-	barra_vida.max_value = max_vida
-	barra_magia.max_value = max_magia
+	actualizar_valores()
 
 func _process(_delta):
 	barra_vida.value = vida
 	texto_vida.text = str(vida)
 	barra_magia.value = magia
 	texto_magia.text = str(magia)
-	texto_moneda.text = str(moneda)
+
+func actualizar_valores():
+	barra_vida.max_value = max_vida
+	barra_magia.max_value = max_magia
