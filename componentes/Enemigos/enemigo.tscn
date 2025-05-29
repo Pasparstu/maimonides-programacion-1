@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bevt5e5uggyuf"]
+
+[ext_resource type="Script" uid="uid://bdd3d7ixmi0x5" path="res://componentes/Enemigos/enemigo_ninja/enemigo_ninja.gd" id="1_q3r1j"]
+[ext_resource type="Texture2D" uid="uid://dmte0osutfvqg" path="res://componentes/Enemigos/enemigo_ninja/fantasma.png" id="2_q3r1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c711s"]
+size = Vector2(42, 42.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twpso"]
+size = Vector2(12.7329, 13.354)
+
+[node name="Enemigo" type="CharacterBody2D" groups=["Enemigos", "Jugador"]]
+script = ExtResource("1_q3r1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_q3r1j")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c711s")
+debug_color = Color(0.979285, 0, 0.389302, 0.42)
+metadata/_edit_group_ = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(3.22, 3.22)
+shape = SubResource("RectangleShape2D_twpso")
+debug_color = Color(0.988724, 0, 0.298741, 0.42)
+metadata/_edit_group_ = true
+
+[node name="TimerAtaque" type="Timer" parent="." groups=["Enemigos", "Jugador"]]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TimerAtaque" to="." method="_on_timer_ataque_timeout"]

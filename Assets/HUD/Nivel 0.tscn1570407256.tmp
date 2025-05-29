@@ -1,0 +1,156 @@
+[gd_scene load_steps=17 format=3 uid="uid://ctn1l1qfdan04"]
+
+[ext_resource type="PackedScene" uid="uid://do2xqf18oq2m2" path="res://componentes/jugador/jugador.tscn" id="1_15uij"]
+[ext_resource type="PackedScene" uid="uid://pudis5xkxful" path="res://Assets/HUD/hud.tscn" id="2_dvlp4"]
+[ext_resource type="Texture2D" uid="uid://bmycuhpxc7vdb" path="res://Assets/Textura/Background/bg_1.png" id="3_001s3"]
+[ext_resource type="Texture2D" uid="uid://bg57it13xk3xg" path="res://Assets/Textura/Background/bg_2.png" id="4_axpjv"]
+[ext_resource type="Texture2D" uid="uid://dhg3f4t8rgy0o" path="res://Assets/Textura/Background/bg_3.png" id="5_c711s"]
+[ext_resource type="Texture2D" uid="uid://gcwjgcp5qju4" path="res://Assets/Textura/Background/bg_4.png" id="6_mbaec"]
+[ext_resource type="Texture2D" uid="uid://yruhy8gpyny6" path="res://Assets/Textura/Background/bg_5.png" id="7_twpso"]
+[ext_resource type="Texture2D" uid="uid://ttlg2nhl2neh" path="res://componentes/jugador/Animacion/star_particle.png" id="8_axpjv"]
+[ext_resource type="Script" uid="uid://bdd3d7ixmi0x5" path="res://componentes/Enemigos/enemigo_ninja/enemigo_ninja.gd" id="8_twpso"]
+[ext_resource type="Script" uid="uid://bs8kymkm3erhc" path="res://componentes/Coleccionables/monedas.gd" id="10_mbaec"]
+[ext_resource type="Script" uid="uid://bvd660vkmu7lb" path="res://componentes/Guardar/save_manager.gd" id="11_twpso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jci7"]
+size = Vector2(1165, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c711s"]
+size = Vector2(42, 42.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twpso"]
+size = Vector2(12.7329, 13.354)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbaec"]
+size = Vector2(611.141, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw637"]
+
+[node name="Escena" type="Node"]
+
+[node name="Jugador" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_15uij")]
+position = Vector2(580, 52)
+gravedad = 10000.0
+impulso_salto = 1055.0
+velocidad = 10000.0
+hud = NodePath("../HUD")
+
+[node name="HUD" parent="." instance=ExtResource("2_dvlp4")]
+offset_left = -1191.0
+offset_top = -96.0
+offset_right = -1191.0
+offset_bottom = -96.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+scroll_limit_end = Vector2(1280, 0)
+
+[node name="Cielo" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cielo"]
+position = Vector2(553, 292)
+texture = ExtResource("3_001s3")
+metadata/_edit_group_ = true
+
+[node name="MontañasLejos" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MontañasLejos"]
+position = Vector2(555, 294)
+texture = ExtResource("4_axpjv")
+metadata/_edit_group_ = true
+
+[node name="Ciudad" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(3, 7)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ciudad"]
+position = Vector2(557, 287)
+texture = ExtResource("5_c711s")
+metadata/_edit_group_ = true
+
+[node name="BosqueLejos" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BosqueLejos"]
+position = Vector2(557, 296)
+texture = ExtResource("6_mbaec")
+metadata/_edit_group_ = true
+
+[node name="BosqueCerca" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(6, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BosqueCerca"]
+position = Vector2(551, 300)
+texture = ExtResource("7_twpso")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxBackground/BosqueCerca"]
+position = Vector2(6, 574)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/BosqueCerca/StaticBody2D"]
+position = Vector2(572.5, 30)
+shape = SubResource("RectangleShape2D_6jci7")
+
+[node name="Enemigo" type="CharacterBody2D" parent="." groups=["Enemigos", "Jugador"]]
+script = ExtResource("8_twpso")
+vida = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemigo"]
+position = Vector2(1206, 684)
+scale = Vector2(3.24, 3.24)
+texture = ExtResource("8_axpjv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo"]
+position = Vector2(1208, 685)
+shape = SubResource("RectangleShape2D_c711s")
+debug_color = Color(0.979285, 0, 0.389302, 0.42)
+metadata/_edit_group_ = true
+
+[node name="Hitbox" type="Area2D" parent="Enemigo"]
+position = Vector2(234, 186)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo/Hitbox"]
+position = Vector2(974, 498)
+scale = Vector2(3.22, 3.22)
+shape = SubResource("RectangleShape2D_twpso")
+debug_color = Color(0.988724, 0, 0.298741, 0.42)
+metadata/_edit_group_ = true
+
+[node name="TimerAtaque" type="Timer" parent="Enemigo" groups=["Enemigos", "Jugador"]]
+wait_time = 5.0
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-10, 45)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(589, 559)
+scale = Vector2(1.885, 1.885)
+shape = SubResource("RectangleShape2D_mbaec")
+debug_color = Color(0, 0.570668, 0.843848, 0.42)
+metadata/_edit_group_ = true
+
+[node name="Moneda" type="Area2D" parent="."]
+position = Vector2(823, 562)
+script = ExtResource("10_mbaec")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Moneda"]
+texture = ExtResource("8_axpjv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moneda"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_pw637")
+metadata/_edit_group_ = true
+
+[node name="SaveManager" type="Node" parent="."]
+script = ExtResource("11_twpso")
+
+[connection signal="timeout" from="Enemigo/TimerAtaque" to="Enemigo" method="_on_timer_ataque_timeout"]

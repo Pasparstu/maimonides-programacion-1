@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://by8rsrofuxnt2"]
+
+[ext_resource type="Script" uid="uid://bs8kymkm3erhc" path="res://componentes/Coleccionables/moneda.gd" id="1_q61pw"]
+[ext_resource type="Texture2D" uid="uid://to64l167v8qj" path="res://Moneda/moneda.webp" id="2_q61pw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw637"]
+
+[node name="Moneda" type="Area2D"]
+script = ExtResource("1_q61pw")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.06, 0.05)
+texture = ExtResource("2_q61pw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(1.485, 1.485)
+shape = SubResource("RectangleShape2D_pw637")
+metadata/_edit_group_ = true

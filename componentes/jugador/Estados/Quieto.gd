@@ -2,6 +2,7 @@ extends Estado
 
 func enter():
 	jugador.sprite.play("Quieto")
+	jugador.velocity.x = 0
 
 func physics_update(_delta):
 	jugador.velocity.y = jugador.gravedad

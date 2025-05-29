@@ -1,5 +1,5 @@
 extends Coleccionable
 
 func coleccionable():
-	Globales.jugador.monedas +=1 
+	Globales.jugador.moneda +=1 
 	queue_free()

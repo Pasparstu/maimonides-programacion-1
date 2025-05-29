@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 10
+
 @export var jugador:CharacterBody2D
-@export var gravedad : float = 100
+@export var gravedad : float = 25
 @export var sprite = AnimatedSprite2D
-@export var impulso_salto : float = 100
-@export var velocidad : float = 100
+@export var impulso_salto : float = 25
+@export var velocidad : float = 25
 @export var hud : Control
 
 var vida : int = 100
@@ -20,7 +20,7 @@ func _ready():
 	actualizar_hud()
 
 	await get_tree().process_frame
-	moneda = Globales.save_manager.datos_guardados.monedas
+	moneda = Globales.save_manager.datos_guardados.moneda
 
 func _physics_process(_delta):
 	actualizar_hud()

@@ -2,4 +2,4 @@ extends Node
 
 var jugador : CharacterBody2D
 
-var save_manager = self
+var save_manager

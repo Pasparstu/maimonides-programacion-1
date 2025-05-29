@@ -294,7 +294,10 @@ animations = [{
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("jugador", "sprite", "hud")]
 script = ExtResource("1_pdsb0")
 jugador = NodePath(".")
+gravedad = 35.935
 sprite = NodePath("AnimatedSprite2D")
+impulso_salto = 35.4
+velocidad = 35.815
 hud = NodePath("CanvasLayer/HUD")
 metadata/_edit_group_ = true
 
@@ -336,9 +339,10 @@ metadata/_custom_type_script = "uid://cr650jj2hfj3h"
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("12_3quvm")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -70)
+offset = Vector2(0, -69.775)
+zoom = Vector2(1.045, 1.045)
 limit_top = 0
-limit_bottom = 648
+limit_bottom = 1123
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
