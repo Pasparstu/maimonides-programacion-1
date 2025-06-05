@@ -3,7 +3,7 @@ extends Estado
 func enter ():
 	jugador.sprite.play("Correr")
  
-func physics_update(delta):
+func physics_update(_delta):
 	var direccion = Input.get_axis(" izquierda", " derecha")
 
 	if direccion == 0:
@@ -14,7 +14,7 @@ func physics_update(delta):
 			jugador.sprite.flip_h = true
 		else:
 			jugador.sprite.flip_h = false
-	jugador.velocity.x = direccion * jugador.velocidad * delta
+	jugador.velocity.x = direccion * jugador.velocidad
 	jugador.move_and_slide()
 
 	if Input.is_action_just_pressed("atacar"):

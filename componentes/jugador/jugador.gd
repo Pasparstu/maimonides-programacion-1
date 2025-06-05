@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 
 @export var jugador:CharacterBody2D
-@export var gravedad : float = 25
+@export var gravedad : float
 @export var sprite = AnimatedSprite2D
-@export var impulso_salto : float = 25
-@export var velocidad : float = 25
+@export var impulso_salto : float 
+@export var velocidad : float 
 @export var hud : Control
 
 var vida : int = 100

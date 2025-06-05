@@ -516,8 +516,8 @@ tile_set = SubResource("TileSet_a6pif")
 [node name="Jugador" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_15uij")]
 position = Vector2(148, 547)
 scale = Vector2(1.5, 1.5)
-gravedad = 100.0
-impulso_salto = 90000.0
+gravedad = 150.0
+impulso_salto = 9.22337e+18
 velocidad = 250.0
 hud = NodePath("../HUD")
 

@@ -3,11 +3,11 @@ extends Estado
 func enter():
 	jugador.sprite.play("Cayendo")
 
-func physics_update(delta): 
-	jugador.velocity.y = jugador.gravedad * delta
+func physics_update(_delta): 
+	jugador.velocity.y = jugador.gravedad 
 	
 	var direccion = Input.get_axis(" izquierda"," derecha")
-	jugador.velocity.x = direccion * jugador.velocidad * delta
+	jugador.velocity.x = direccion * jugador.velocidad
 	
 	if direccion < 0 and direccion != 0:
 		jugador.sprite.flip_h = true
